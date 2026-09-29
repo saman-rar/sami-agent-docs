@@ -1,0 +1,79 @@
+---
+title: "Troubleshooting Common Sami Issues"
+sidebarTitle: "Troubleshooting"
+description: "Fix the most common issues with Sami: sign-in errors, model failures, deployment problems, and session issues."
+---
+
+This page covers the most common problems you might encounter while running or deploying Sami, along with steps to resolve each one. Work through the relevant section below before filing an issue.
+
+<AccordionGroup>
+  <Accordion title='"Sign-in failed. Try again."'>
+    This error appears on the sign-in page when Vercel OAuth cannot authenticate your account.
+
+    **Steps to resolve:**
+
+    1. Confirm that the Vercel account you're signing in with has access to the deployment — check project membership in the Vercel dashboard.
+    2. Clear your browser cookies and try signing in again. Stale session data can cause OAuth callbacks to fail.
+    3. If you're running Sami in development (`eve dev`), sign-in is bypassed automatically — you should not see this screen locally unless you're running the Next.js server directly with `next dev`.
+  </Accordion>
+
+  <Accordion title='"The model is temporarily unavailable. Please try again."'>
+    This message means the AI model returned an error rather than a response. It is usually transient.
+
+    **Steps to resolve:**
+
+    1. Wait a moment and try your message again — the model provider may be experiencing brief elevated latency or an intermittent outage.
+    2. If the error persists across multiple attempts, open `agent/agent.ts` and verify that the `model` field contains a valid model identifier. An unrecognized value will cause every request to fail.
+    3. Check the [eve documentation](https://eve.dev/docs) to confirm the model is still available and the identifier format is correct.
+  </Accordion>
+
+  <Accordion title='"Request failed" with no details'>
+    A bare "Request failed" error without additional context usually points to a network or connectivity issue between the browser and the Sami server.
+
+    **Steps to resolve:**
+
+    1. Check your network connection and reload the page.
+    2. If you're behind a corporate proxy or firewall, ensure that **WebSocket connections** are allowed. Sami uses streaming responses over WebSocket — blocking these connections will cause requests to fail silently.
+    3. Disable any browser extensions that intercept network requests (VPNs, ad blockers, privacy proxies) and try again.
+  </Accordion>
+
+  <Accordion title="Deployment fails with missing environment variables">
+    A deployment that exits with an error about missing credentials means the required environment variables have not been added to your Vercel project yet.
+
+    **Steps to resolve:**
+
+    1. Open your Vercel project dashboard and navigate to **Settings → Environment Variables**.
+    2. Add all required credentials for Vercel OAuth and Better Auth. Refer to the [deployment guide](/deployment/vercel) for a description of what needs to be configured.
+    3. Re-run `eve deploy` once the variables are saved. Vercel injects environment variables at build time, so an existing deployment will not pick them up — you must redeploy.
+  </Accordion>
+
+  <Accordion title="Session not resuming correctly">
+    If a previous conversation is not visible or the agent behaves as though it has no context, the session may belong to a different account.
+
+    **Steps to resolve:**
+
+    1. Verify that you are signed in with the **same Vercel account** you used when the session was originally created. Sessions are scoped to the authenticated account and are not shared across accounts.
+    2. Sign out, clear your cookies, and sign back in with the correct account.
+    3. If the session still does not appear, it may have expired or been invalidated by a redeployment that rotated the Better Auth secret.
+  </Accordion>
+
+  <Accordion title="Development server not reloading after file changes">
+    If edits to files in `agent/` are not being picked up while you develop, you may be running the wrong development command.
+
+    **Steps to resolve:**
+
+    1. Make sure you're starting the server with `eve dev`, not `next dev` directly. Only `eve dev` watches the `agent/` directory and reloads the agent on change.
+    2. Stop the current server (`Ctrl+C`), then restart it with:
+
+       ```bash
+       eve dev
+       ```
+
+    3. If hot-reload still does not work, check for file-system watch limits on Linux (`fs.inotify.max_user_watches`) and increase the limit if necessary.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  For issues not covered here, visit the [eve documentation](https://eve.dev/docs)
+  or check the project's GitHub repository for open issues and discussions.
+</Note>

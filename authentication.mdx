@@ -1,0 +1,54 @@
+---
+title: "Sign In and Account Management for Sami"
+sidebarTitle: "Authentication"
+description: "Sami uses Vercel OAuth for secure sign-in. Learn how to sign in, manage your session, and sign out."
+---
+
+Sami uses Vercel as its identity provider. When you open Sami for the first time — or after your session expires — you see a sign-in page instead of the chat interface. This page explains how to complete the sign-in flow, what your session represents, and how to sign out when you are done.
+
+<Note>
+  If you are not signed in, Sami shows the sign-in page and you cannot access the chat. Every route in Sami requires a valid session.
+</Note>
+
+## Signing in
+
+The sign-in page displays three pieces of information: the **sami** agent name, a green **Ready** indicator confirming the service is available, and a **Continue with Vercel** button.
+
+To sign in:
+
+1. Click **Continue with Vercel**. The button label changes to **Redirecting…** while your browser navigates to Vercel's authorization page.
+2. On Vercel's authorization page, review the requested permissions and click **Allow**.
+3. Vercel redirects you back to Sami and your session begins automatically. The chat interface opens and your avatar appears in the top-left corner.
+
+If sign-in fails — for example because of a network error or a declined authorization — Sami shows a **Sign-in failed. Try again.** message beneath the button. Click the button again to retry.
+
+## Your session
+
+After sign-in, Sami creates a session that ties your identity to the current browser. Sessions last **8 hours** from the time they are created. Session lifetime is fixed and does not reset with activity — after 8 hours, Sami prompts you to sign in again.
+
+While your session is active, you can:
+
+- Send messages and receive streaming responses.
+- Navigate between conversations using their unique URLs.
+- Close and reopen the browser tab without losing your place.
+
+Your name and avatar are visible in the top-left corner of the chat interface for the duration of the session.
+
+## Account menu
+
+Your avatar in the top-left corner opens the account menu. The menu shows:
+
+- Your **display name** in medium-weight text.
+- Your **email address** in muted text beneath your name.
+- A **Log out** option with a log-out icon, separated from your account details by a divider.
+
+Click anywhere outside the menu to close it without taking any action.
+
+## Signing out
+
+To sign out of Sami:
+
+1. Click your avatar in the top-left corner to open the account menu.
+2. Click **Log out**.
+
+The button label changes to **Logging out…** while the request is processed. Once complete, your browser returns to the sign-in page and your session is invalidated. Any unsaved conversation state visible in that tab is cleared, though your previous sessions remain accessible at their URLs if you sign in again.

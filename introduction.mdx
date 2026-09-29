@@ -1,0 +1,43 @@
+---
+title: "Sami: Practical AI Assistant for Developers"
+sidebarTitle: "Introduction"
+description: "Sami is a web-based AI assistant built on the eve framework, offering specialized skills for development tasks, technical writing, and more."
+---
+
+Sami is a web-based AI assistant built for developers who want focused help with coding, writing, and pull request workflows. It runs as a Next.js app deployed to Vercel, is powered by a GPT-series model, and is open-source so you can read the code or host your own instance. You sign in with your Vercel account and chat directly in the browser — no local setup required.
+
+## What makes Sami different
+
+Most AI assistants are general-purpose. Sami layers a set of curated **skills** on top of a capable base model, giving it deep, task-specific knowledge in areas that come up constantly in development work:
+
+| Skill | What it does |
+|---|---|
+| **eve** | Helps you build, edit, and debug agents using the [eve framework](https://eve.dev) — instructions, tools, skills, connections, channels, subagents, and schedules. |
+| **Technical writing** | Writes, edits, reviews, and audits developer-facing documentation with an emphasis on accuracy and clarity. |
+| **GitHub PR description** | Inspects a branch diff and drafts a clear, reviewer-focused pull request description following a structured template. |
+| **shadcn/ui** | Adds, configures, styles, and debugs shadcn/ui components and design systems, applying component composition rules consistently. |
+
+Each skill brings focused reference material, rules, and reasoning strategies that Sami applies automatically when your message matches the task.
+
+## How it works
+
+When you open Sami, you see a sign-in page. Click **Continue with Vercel** to authorize via Vercel OAuth — the process takes a few seconds and returns you to the chat interface. From there, type a message in the prompt box and press **Enter** or click the submit button. Sami streams its reply back token by token so you see the response as it forms.
+
+Every conversation lives at its own URL under `/s/<session-id>`. Sessions persist across browser refreshes and tab closes, so you can return to a conversation at any time. Each session lasts up to 8 hours from when it was created.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Sign in, send your first message, and try a skill in under five minutes.
+  </Card>
+  <Card title="Chat interface" icon="message" href="/using-sami/chat-interface">
+    Learn how to compose messages, steer a response, and manage sessions.
+  </Card>
+  <Card title="Skills overview" icon="stars" href="/skills/overview">
+    Explore what each skill knows and when Sami applies it.
+  </Card>
+  <Card title="Deploy to Vercel" icon="cloud" href="/deployment/vercel">
+    Host your own Sami instance from the open-source repository.
+  </Card>
+</CardGroup>

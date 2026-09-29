@@ -1,0 +1,78 @@
+---
+title: "Navigating Sami's Chat Interface"
+sidebarTitle: "Chat Interface"
+description: "A guide to Sami's chat UI: sending messages, reading streaming responses, stopping generation, and steering conversations."
+---
+
+Sami's chat interface is a single-page web app centered on a conversation panel and a persistent prompt bar at the bottom of the screen. When you first open Sami you see the prompt bar and the "sami" wordmark centered on the page — a blank canvas ready for your first message. Once a conversation begins, the prompt bar anchors to the bottom, the conversation scrolls above it, and a slim header with session controls appears at the top. This page walks you through every interaction available inside that layout.
+
+## Sending a message
+
+Type your message in the textarea at the bottom of the screen. Its placeholder text reads **"Send a message…"** to indicate it's always ready for input.
+
+<Steps>
+  <Step title="Type your message">
+    Click or tap the textarea and begin typing. For a single-line message, press **Enter** to submit.
+  </Step>
+  <Step title="Write across multiple lines">
+    Press **Shift + Enter** to insert a line break without submitting. This is useful for structured prompts, lists, or pasting multi-line code snippets.
+  </Step>
+  <Step title="Submit">
+    Press **Enter** (without Shift) or click the **submit button** on the right side of the prompt bar to send your message.
+  </Step>
+</Steps>
+
+<Tip>
+  Use clear, specific prompts for best results. If Sami is mid-response and you want a different direction, just type your redirect — you don't need to wait for the current response to finish.
+</Tip>
+
+## Streaming responses
+
+Sami streams its reply token-by-token rather than waiting until the full response is ready. You'll see text appear progressively in the conversation panel as the model generates it.
+
+While the model is processing your message — before the first tokens appear — a **Thinking** indicator is shown inside an assistant message bubble. It displays a brain icon alongside a shimmering "Thinking" label. Once generation begins, this placeholder is replaced by the streamed text.
+
+This streaming behavior means you can start reading and processing Sami's answer immediately, even for long responses.
+
+## Stopping a response
+
+You can cancel an in-progress response at any time.
+
+While Sami is responding, the submit button in the prompt bar is replaced by a **Stop button** (a filled square icon). Click it to immediately cancel the current generation. Any text already streamed into the conversation remains visible, so you won't lose what was generated before you stopped.
+
+If the cancellation itself encounters an error, a short inline alert appears in the prompt area describing what went wrong.
+
+## Steering a conversation
+
+You don't have to wait for a response to finish before redirecting it. While Sami is still streaming, you can type a new message in the prompt bar and submit it. Sami will receive your new input and steer the ongoing turn in that direction — using `turnPolicy: "steer"` under the hood.
+
+This is useful when:
+
+- Sami is heading in the wrong direction and you want to correct the trajectory early.
+- You realize mid-answer that you need a different format or level of detail.
+- You want to add context that changes what the rest of the response should say.
+
+Simply type your redirect into the prompt bar and press **Enter** — the submit button remains active whenever there is input text, even during a response.
+
+## Starting a new chat
+
+To begin a completely fresh conversation, click the **+ New chat** button in the top-right corner of the header. This navigates to `/s`, clears the conversation panel, and resets the session so your next message creates a brand-new session. Your previous conversations remain intact at their own URLs.
+
+The **+ New chat** button only appears once a session is active (i.e., you've sent at least one message or have navigated to a session URL). On the initial blank-canvas view, the button is not shown because you're already starting fresh.
+
+## Error messages
+
+If a request fails, Sami renders an inline error alert inside the conversation — visually distinct from normal assistant messages. The alert displays a **"Request failed"** heading followed by a description of the problem.
+
+Common error scenarios include:
+
+<CardGroup cols={2}>
+  <Card title="Model unavailable" icon="circle-exclamation">
+    Shown when the underlying model call fails. The message reads: *"The model is temporarily unavailable. Please try again."*
+  </Card>
+  <Card title="Cancellation error" icon="ban">
+    Shown if stopping a response fails internally. The error text describes what prevented the cancellation.
+  </Card>
+</CardGroup>
+
+Errors are tied to the current turn. Submitting a new message clears any displayed error and starts a fresh request.

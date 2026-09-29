@@ -1,0 +1,34 @@
+---
+title: "GitHub PR Descriptions: Let Sami Write Them for You"
+sidebarTitle: "GitHub PRs"
+description: "Sami's GitHub PR skill drafts and reviews pull request descriptions — focused on helping reviewers understand what changed and why."
+---
+
+The GitHub PR skill helps you write concise, reviewer-focused pull request descriptions. Rather than listing files changed or narrating commit history, Sami writes descriptions that lead with the problem being solved, describe the solution clearly, and give reviewers exactly what they need to assess the change with confidence. The result is a description that speeds up review — not one that documents your own work for yourself.
+
+## What Sami generates
+
+- **Summary** — a short paragraph of roughly 100 words or fewer that opens with the concrete problem or user need, then describes the solution and any meaningful behavior change
+- **Linked issues** — references to related issues or discussions using `Closes #N` or `Related to #N` when they exist
+- **Validation notes** — a plain statement of what was actually tested, including any limitations or known gaps
+- **Checklist** — the standard PR checklist with only verified items checked; nothing is pre-checked as a formality
+
+## Example prompts
+
+```
+"Write a PR description for these changes: [paste diff or summary]"
+"Review my existing PR description and suggest improvements"
+"Summarize this branch for reviewers"
+```
+
+## What makes a good PR description
+
+Sami follows a small set of principles that keep PR descriptions useful. Lead with why the change is needed — the problem, user need, or decision that prompted it. Then describe the solution and the behavior it produces. Include implementation detail only when it is necessary to assess behavior or risk. Mention breaking changes, preserved behavior, tradeoffs, scope boundaries, or stacked PRs only when they genuinely matter to the review. Avoid listing files or narrating individual commits — reviewers can see the diff; they need your interpretation of it.
+
+## Tips for best results
+
+Provide the diff or a plain summary of the changes, the commit messages from the branch, and any related issue links you want referenced. If the PR updates or deprecates something, say so explicitly. The more context you give Sami, the more accurate and specific the description will be — a diff alone is enough to start, but issue context and commit messages make the result significantly stronger.
+
+<Note>
+  Sami writes descriptions for reviewers, not changelogs — it focuses on impact and behavior, not file listings. If you need a changelog entry or release note instead, say so and it will adjust the format and tone accordingly.
+</Note>

@@ -1,0 +1,43 @@
+---
+title: "Configure Sami's AI Model"
+sidebarTitle: "AI Model"
+description: "Change the language model Sami uses by editing agent.ts. Supports any model available through the eve framework."
+---
+
+Sami's AI model is configured in `agent/agent.ts` using the eve framework's `defineAgent` function. Changing the value of the `model` field is all it takes to swap the underlying language model — no other code changes are required.
+
+```typescript agent/agent.ts
+import { defineAgent } from "eve";
+
+export default defineAgent({
+  model: "openai/gpt-5.6-luna-fast",
+});
+```
+
+## Changing the model
+
+The `model` field accepts a model string in the format `provider/model-name`. To switch models, replace the existing value with the identifier for the model you want to use, then restart your development server or redeploy to production.
+
+```typescript agent/agent.ts
+import { defineAgent } from "eve";
+
+export default defineAgent({
+  model: "anthropic/claude-opus-4",
+});
+```
+
+After saving the file, `eve dev` will reload the agent automatically. For production, run `eve deploy` to push the change live.
+
+## Supported models
+
+Any model available in the eve framework can be used with Sami. The full list of supported providers and model identifiers is maintained in the [eve documentation](https://eve.dev/docs).
+
+<Note>
+  Changing the model affects response quality, speed, and cost. Test your agent
+  after switching models to make sure it still behaves as expected.
+</Note>
+
+<Warning>
+  The model identifier must exactly match a model supported by your eve
+  deployment. An invalid model string will cause requests to fail.
+</Warning>

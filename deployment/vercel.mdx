@@ -1,0 +1,76 @@
+---
+title: "Deploy Sami to Vercel"
+sidebarTitle: "Deploy to Vercel"
+description: "Deploy your Sami instance to production on Vercel using the eve CLI. Covers linking your project, setting environment variables, and going live."
+---
+
+Sami is designed to deploy on Vercel using the `eve deploy` command — this page walks through the full deployment process from a fresh clone to a live production URL.
+
+## Prerequisites
+
+Before deploying, make sure you have the following in place:
+
+- **Node.js 24.x** — required by Sami's engine field; check with `node --version`
+- **eve CLI** — install globally with `npm install -g eve`
+- **A Vercel account** — sign up at [vercel.com](https://vercel.com) if you don't have one
+
+## Deploy steps
+
+<Steps>
+  <Step title="Install dependencies">
+    Install the project's dependencies from the repository root:
+
+    ```bash
+    pnpm install
+    ```
+
+    npm and yarn work too — use whichever matches your preferred package manager.
+  </Step>
+
+  <Step title="Run locally first">
+    Start the development server to verify your agent works before deploying:
+
+    ```bash
+    eve dev
+    ```
+
+    The development TUI opens an interactive session at localhost. Send a few test messages to confirm the model responds correctly and your instructions behave as expected.
+  </Step>
+
+  <Step title="Deploy">
+    From the project root, run:
+
+    ```bash
+    eve deploy
+    ```
+
+    If this is your first deployment, the CLI prompts you to link or create a Vercel project. Once linked, it builds the application and pushes it to production.
+  </Step>
+
+  <Step title="Verify">
+    Visit the Vercel deployment URL printed by the CLI. The Sami sign-in page should appear. Sign in with your Vercel account to open the chat interface.
+  </Step>
+</Steps>
+
+## Environment variables
+
+Sami uses Vercel OAuth for authentication and Better Auth for session management. The credentials these systems need — including your Vercel OAuth client details and the Better Auth secret — must be set in your **Vercel project settings** before the application will function correctly.
+
+You can configure environment variables through the Vercel dashboard under **Settings → Environment Variables**, or the `eve deploy` workflow will guide you through the required values on first deployment.
+
+## Subsequent deployments
+
+Every time you update your agent — whether you change `agent/instructions.md`, swap the model in `agent/agent.ts`, or add new tools — run `eve deploy` again to push the changes to production:
+
+```bash
+eve deploy
+```
+
+The CLI remembers the linked project from your first deployment and handles everything automatically.
+
+<Tip>
+  Use `eve deploy --non-interactive --yes` in CI pipelines for automated
+  deployments without prompts.
+</Tip>
+
+For the full deployment reference — including custom domains, rollbacks, and advanced configuration — see the [eve deployment documentation](https://eve.dev/docs/guides/deployment/vercel).

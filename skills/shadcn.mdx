@@ -1,0 +1,32 @@
+---
+title: "shadcn UI Skill: Component Help with Sami"
+sidebarTitle: "shadcn UI"
+description: "Sami's shadcn skill helps you add, customize, and use shadcn UI components in your Next.js projects."
+---
+
+The shadcn skill gives Sami expertise in the [shadcn/ui](https://ui.shadcn.com) component library, helping you integrate, customize, and troubleshoot components in your project. shadcn/ui works differently from most component libraries — components are added as source code directly into your project via the CLI, so you own every file and can modify it freely. Sami understands this model, the project configuration it relies on, and the conventions that keep your component code consistent and maintainable.
+
+## What this skill covers
+
+- **Installing components via the CLI** — running `npx shadcn@latest add <component>` correctly for your package manager, and using `--dry-run` and `--diff` to preview changes before applying them
+- **Customizing styles and variants** — working with semantic color tokens, Tailwind utility classes, and the variant system without breaking component behavior
+- **Working with the component registry** — searching registries, adding components from community sources, and fixing import paths after installation
+- **Using MCP with shadcn** — integrating the shadcn MCP server for project-aware component assistance
+- **Preset and theme management** — applying, merging, and switching presets using `npx shadcn@latest apply` and `preset` subcommands
+
+## Example prompts
+
+```
+"Add a shadcn Dialog component to my project"
+"How do I customize the Button variant colors?"
+"What's the best way to add a data table with sorting and filtering?"
+"Help me build a command palette using cmdk and shadcn"
+```
+
+## Working with the shadcn CLI
+
+Sami knows the full `npx shadcn@latest add <component>` workflow and adapts the command to your project's package manager — `pnpm dlx shadcn@latest`, `bunx --bun shadcn@latest`, or `npx shadcn@latest` depending on what your project uses. It also understands `components.json`, the configuration file that tells the CLI where to place components, which aliases to use, and which Tailwind version and icon library your project depends on. When you add a component, Sami checks the installed list first to avoid re-adding what you already have, verifies the added files for correct composition, and fixes any import path mismatches left by community registry components.
+
+<Tip>
+  Tell Sami which framework and styling setup you're using — for example, Next.js App Router with Tailwind v4 — for the most relevant advice. Tailwind v3 and v4 use different theming approaches, and App Router projects need `"use client"` on components that use state or browser APIs.
+</Tip>

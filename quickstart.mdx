@@ -1,47 +1,54 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Sami in Minutes"
+sidebarTitle: "Quickstart"
+description: "Learn how to sign in to Sami, send your first message, and start using its AI skills in under five minutes."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+This page walks you through everything you need to get started with Sami: opening the app, signing in with your Vercel account, sending your first message, and trying one of Sami's built-in skills. The whole process takes less than five minutes.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Open Sami">
+    Navigate to your Sami deployment URL in any modern browser. If you are using a hosted instance, your team or administrator will have shared the URL with you. If you deployed Sami yourself, this is the production URL Vercel assigned to your project.
 
-    ```bash
-    npm install your-package
-    ```
+    You land on the sign-in page, which shows the **sami** name, a green **Ready** indicator, and a **Continue with Vercel** button.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
-    ```
+  <Step title="Sign in with Vercel">
+    Click **Continue with Vercel**. The button label changes to **Redirecting…** while the request is in flight, then your browser navigates to Vercel's authorization page.
+
+    On the Vercel authorization page, review the requested permissions and click **Allow**. Vercel redirects you back to Sami and creates a new session. The entire flow typically takes a few seconds.
+
+    Once you are signed in, your avatar appears in the top-left corner and the chat interface opens.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
-    ```
+  <Step title="Send a message">
+    Type any message into the prompt box at the center of the screen and press **Enter**, or click the submit button on the right side of the prompt box.
+
+    Sami streams its reply back token by token — you will see the text appear progressively rather than all at once. While a response is streaming, a **Stop** button replaces the submit button so you can cancel at any time.
+
+    Your conversation moves to a unique URL under `/s/<session-id>`. You can bookmark this URL and return to the conversation later.
+  </Step>
+
+  <Step title="Try a skill">
+    Sami automatically applies the right skill based on what you ask. To see this in action, try one of the following prompts:
+
+    - `Help me write a GitHub PR description for my latest changes.`
+    - `How do I add a tool to my eve agent?`
+    - `Edit this paragraph for clarity: [paste your text]`
+    - `How do I add a Dialog component using shadcn/ui?`
+
+    Sami recognizes the task and brings in the relevant skill knowledge — PR structure rules, eve framework docs, writing style guidelines, or shadcn/ui component patterns — without any extra configuration on your part.
+  </Step>
+
+  <Step title="Start a new session">
+    Once you are in an active conversation, a **New chat** button appears in the top-right corner of the header. Click it to open a fresh session with a new URL. Your previous sessions remain available at their original URLs.
   </Step>
 </Steps>
 
 <Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
-
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
+  Each session gets a unique URL you can bookmark and return to at any time. Sessions persist across browser refreshes and tab closes, so you will not lose your conversation if you navigate away.
 </Tip>
+
+<Note>
+  In development mode, sign-in is bypassed for local testing. When you run Sami locally, you go straight to the chat interface without completing the Vercel OAuth flow.
+</Note>

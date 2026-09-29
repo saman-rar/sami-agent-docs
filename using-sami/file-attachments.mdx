@@ -1,0 +1,81 @@
+---
+title: "Attaching Files to Sami Conversations"
+sidebarTitle: "File Attachments"
+description: "Send images and documents alongside your messages in Sami. Learn which file types are supported and how attachments work."
+---
+
+Sami supports file attachments directly in the prompt input, enabling multi-modal interactions where your message includes not just text but also images, documents, or other files. You can share a screenshot of an error, a diagram you want explained, a document you need summarized, or a code file you want reviewed — all in the same message as your instructions.
+
+## Attaching a file
+
+The prompt input area includes an attachment control alongside the text textarea. Use it to select one or more files from your device before submitting your message.
+
+<Steps>
+  <Step title="Open the attachment picker">
+    Click the attachment control in the prompt input bar. Your browser's file picker will open, allowing you to select a file from your local filesystem.
+  </Step>
+  <Step title="Select your file">
+    Choose the file you want to attach. It will appear as a preview chip in the prompt input area, showing the filename, media type, and file size.
+  </Step>
+  <Step title="Add your message (optional)">
+    Type any accompanying instructions or questions in the textarea. You can attach a file with no text if you want Sami to interpret the file directly.
+  </Step>
+  <Step title="Submit">
+    Press **Enter** or click the submit button. Sami uploads the file and sends it to the model alongside your text.
+  </Step>
+</Steps>
+
+<Note>
+  Large files may take a moment to upload before your message is sent. The submit button remains visible during this time.
+</Note>
+
+## Sending text with attachments
+
+You can combine text and files in the same message in any combination:
+
+<CardGroup cols={2}>
+  <Card title="Text + file(s)" icon="file-lines">
+    Include instructions alongside your attachment. For example, type "Review this code for security issues" and attach a source file.
+  </Card>
+  <Card title="File(s) only" icon="file">
+    Attach a file with no text message. Sami will process the file directly and respond based on its content.
+  </Card>
+</CardGroup>
+
+When your message contains files, Sami builds a structured content payload that includes each file's data, filename, and media type. If you also included text, it is sent as a separate text part in the same turn. The model receives all parts together.
+
+## Supported file types
+
+Sami passes each file to the model with its detected media type. The model handles the content based on that type.
+
+| Category | Examples |
+|---|---|
+| **Images** | Screenshots, photographs, diagrams, charts, UI mockups |
+| **Documents** | PDFs, text files, source code files |
+
+Images are rendered as thumbnails inside the conversation once sent — you'll see a small image preview in the message bubble. Non-image files are displayed as a file chip showing the filename and media type.
+
+When Sami echoes an attachment back in the conversation, the chip links out to the uploaded file URL so you can open or download it again.
+
+## Tips for effective use
+
+Be specific about what you want Sami to do with the file. Vague prompts like "here's a file" give the model less to work with than targeted instructions.
+
+<CardGroup cols={2}>
+  <Card title="Describe diagrams" icon="diagram-project">
+    *"Describe what this architecture diagram shows and identify any single points of failure."*
+  </Card>
+  <Card title="Review code" icon="code">
+    *"Review this file for security issues and suggest improvements."*
+  </Card>
+  <Card title="Summarize documents" icon="file-lines">
+    *"Summarize the key decisions in this document in three bullet points."*
+  </Card>
+  <Card title="Debug from screenshots" icon="bug">
+    *"This is a screenshot of the error I'm seeing. What's causing it?"*
+  </Card>
+</CardGroup>
+
+<Tip>
+  You can attach multiple files in a single message. If you're comparing two files or providing supporting context alongside a primary document, select all the files you need before submitting.
+</Tip>

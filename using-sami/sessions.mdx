@@ -1,0 +1,59 @@
+---
+title: "Managing Conversations and Sessions in Sami"
+sidebarTitle: "Sessions"
+description: "Sami saves every conversation as a persistent session with its own URL. Learn how sessions work and how to return to past conversations."
+---
+
+Every conversation you have with Sami is stored as a **session** — a persistent record of the full message exchange tied to your account. Each session lives at its own unique URL in the format `/s/<sessionId>`, which means you can bookmark it, share it with yourself across devices, or navigate back to it at any time to pick up exactly where you left off.
+
+## How sessions work
+
+When you open Sami at `/s` and send your first message, a new session is created automatically. At that moment Sami updates the browser URL to `/s/<sessionId>` using the browser History API — without triggering a full page navigation that would interrupt the active stream. The URL change happens in the background so your response keeps flowing without interruption.
+
+From that point forward, the URL in your browser's address bar is the canonical identifier for that conversation. You can copy it from the address bar at any time.
+
+<Note>
+  Sessions are scoped to your Sami instance. They are not shared across deployments.
+</Note>
+
+## Returning to a session
+
+To resume a previous conversation, navigate directly to its `/s/<sessionId>` URL. Sami will:
+
+<Steps>
+  <Step title="Load the session">
+    Sami fetches the full message history for that session ID and restores every message — both yours and the assistant's — in the conversation panel.
+  </Step>
+  <Step title="Restore scroll position">
+    Sami restores your previous scroll position within the conversation so you land where you left off, not at the top of a long thread.
+  </Step>
+  <Step title="Resume from the last state">
+    The session picks up from its last completed turn. You can continue the conversation immediately by typing in the prompt bar.
+  </Step>
+</Steps>
+
+<Tip>
+  Bookmark important session URLs to quickly return to ongoing work — such as a long research thread, a document you're iterating on, or a debugging session in progress.
+</Tip>
+
+## Starting a fresh session
+
+There are two ways to start a brand-new session:
+
+- **+ New chat button** — click the **+ New chat** button in the top-right corner of the header. This navigates to `/s` and clears the conversation panel. Your next message will create a new session with a fresh session ID.
+- **Direct navigation** — go directly to `/s` in your browser. This has the same effect as clicking + New chat.
+
+Either approach leaves all your existing sessions completely intact at their own URLs.
+
+## Session persistence
+
+Sessions are tied to your authenticated account. Signing out and signing back in to the same account restores access to all your previous sessions. Because the session URL encodes only the session ID — not any credential — you must be signed in to view or continue a session.
+
+<CardGroup cols={2}>
+  <Card title="Signed in" icon="circle-check">
+    All sessions associated with your account are accessible by navigating to their `/s/<sessionId>` URL.
+  </Card>
+  <Card title="Signed out" icon="circle-xmark">
+    Navigating to a session URL will redirect you to the sign-in screen. No session data is lost; it will be available again after you authenticate.
+  </Card>
+</CardGroup>

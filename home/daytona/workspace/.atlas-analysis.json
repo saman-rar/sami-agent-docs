@@ -1,0 +1,83 @@
+{
+  "projectType": "saas",
+  "projectName": "Sami",
+  "projectDescription": "Sami is a practical AI assistant built on the eve framework, accessible through a web chat interface with Vercel authentication and specialized skills for development, writing, and code tasks.",
+  "theme": "luma",
+  "primaryColor": "#6366f1",
+  "lightColor": "#eef2ff",
+  "darkColor": "#312e81",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "authentication"
+            ]
+          },
+          {
+            "group": "Using Sami",
+            "pages": [
+              "using-sami/chat-interface",
+              "using-sami/sessions",
+              "using-sami/file-attachments"
+            ]
+          },
+          {
+            "group": "Skills",
+            "pages": [
+              "skills/overview",
+              "skills/eve-development",
+              "skills/technical-writing",
+              "skills/github-pr",
+              "skills/shadcn"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
+              "configuration/environment-variables",
+              "configuration/agent-model",
+              "configuration/agent-instructions"
+            ]
+          },
+          {
+            "group": "Deployment",
+            "pages": [
+              "deployment/vercel",
+              "deployment/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Web-based AI chat interface with real-time streaming responses",
+    "Vercel OAuth authentication with session management",
+    "Persistent conversation sessions with URL-based routing",
+    "File attachment support for multi-modal interactions",
+    "Specialized skills: eve development, technical writing, GitHub PR descriptions, shadcn UI",
+    "Vercel MCP connection for managing projects and deployments",
+    "Cancellable and steerable AI responses",
+    "Deploy to Vercel with a single command"
+  ],
+  "publicApiSurface": [
+    "useEveAgent hook (eve/react)",
+    "agent.send(message, options)",
+    "agent.cancel()",
+    "agent.respond(inputResponses)",
+    "eveChannel({ auth }) — agent channel definition",
+    "defineMcpClientConnection({ url, auth }) — MCP connection",
+    "defineAgent({ model }) — agent configuration",
+    "eve dev — local development TUI",
+    "eve deploy — deploy to Vercel",
+    "eve add — install integrations",
+    "eve eval — run evaluations",
+    "better-auth social sign-in with Vercel provider"
+  ]
+}

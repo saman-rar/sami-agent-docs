@@ -1,0 +1,45 @@
+---
+title: "Customize Sami's Identity and Behavior"
+sidebarTitle: "Agent Instructions"
+description: "Edit agent/instructions.md to change Sami's persona, tone, response style, and behavioral guidelines."
+---
+
+Sami's personality, purpose, and response guidelines are defined in `agent/instructions.md` — the easiest file to customize. You write plain Markdown, and eve passes the contents to the model as the system prompt on every request.
+
+```markdown agent/instructions.md
+# Identity
+
+You are a practical AI assistant who helps people get work done using the available tools. Give clear, direct, and well-structured answers. Match the user's requested tone and format. Verify facts before replying, and state uncertainty or assumptions instead of guessing.
+```
+
+## What to customize
+
+You can change any aspect of Sami's behavior by editing this file. Common things to adjust include:
+
+- **Name and persona** — give the agent a different name or role (e.g. "You are Alex, a senior software engineer")
+- **Communication style and tone** — formal, casual, concise, verbose, or something domain-specific
+- **Preferred response formats** — bullet points, prose, code-first, numbered steps
+- **Domain focus** — restrict the agent to a particular subject area or set of responsibilities
+- **Uncertainty handling** — specify exactly what the agent should say when it doesn't know something
+
+<Tip>
+  Keep instructions concise and action-oriented. Concrete rules like "Always
+  respond in bullet points for code questions" are more effective than vague
+  personality traits.
+</Tip>
+
+## How to apply changes
+
+During development, eve watches the `agent/` directory and reloads the agent whenever you save a file — no restart needed. Just edit `agent/instructions.md` and send a new message in the development TUI to see the updated behavior immediately.
+
+For production, run `eve deploy` from the project root to push your changes live.
+
+```bash
+eve deploy
+```
+
+## Advanced: TypeScript instructions
+
+For use cases where the system prompt needs to vary — for example, based on the signed-in user's role or preferences — you can create `agent/instructions.ts` instead of (or alongside) `agent/instructions.md`. This file exports a function that receives request context and returns a string, giving you full programmatic control over what the model sees.
+
+See the [eve documentation](https://eve.dev/docs) for the full API reference and examples.

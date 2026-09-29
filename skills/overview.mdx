@@ -1,0 +1,36 @@
+---
+title: "Sami Skills: Extending AI with Specialized Expertise"
+sidebarTitle: "Overview"
+description: "Skills are purpose-built instruction sets that give Sami deep expertise in specific domains like coding, writing, and UI development."
+---
+
+Skills are focused instruction sets that give Sami specialized knowledge and workflows beyond general-purpose chat. Where a standard conversation might rely on broad training data, a skill equips Sami with domain-specific rules, verified sources, and structured approaches — so when you ask about an eve agent deployment or a shadcn component, Sami draws on expertise tuned for that exact task rather than generic patterns.
+
+## Available skills
+
+<CardGroup cols={2}>
+  <Card title="eve Development" icon="robot" href="/skills/eve-development">
+    Build, configure, and debug eve agents — tools, connections, channels, subagents, and more.
+  </Card>
+  <Card title="Technical Writing" icon="pen-nib" href="/skills/technical-writing">
+    Write, edit, and review developer documentation with accuracy verified against source code.
+  </Card>
+  <Card title="GitHub PRs" icon="github" href="/skills/github-pr">
+    Draft and improve pull request descriptions that help reviewers understand what changed and why.
+  </Card>
+  <Card title="shadcn UI" icon="puzzle-piece" href="/skills/shadcn">
+    Add, customize, and troubleshoot shadcn/ui components in your Next.js projects.
+  </Card>
+</CardGroup>
+
+## How skills activate
+
+Skills are automatically applied based on the context of your request — you do not need to name or invoke them explicitly. When you describe what you need, Sami identifies which skill is most relevant and applies it. Ask about adding a channel to an eve agent and the eve skill kicks in. Ask to clean up a README and the technical writing skill takes over. Just describe your task naturally and Sami will match it to the right expertise.
+
+## Combining skills
+
+Sami can draw on multiple skills within a single conversation. If you ask for help understanding the eve changes in a branch and then want a PR description written for them, Sami applies the eve development skill to explain the code and the GitHub PR skill to draft the description — without you needing to switch modes. Skills compose naturally, so complex tasks that span multiple domains are handled in one continuous thread.
+
+<Tip>
+  Be specific about your task — the more context you give, the better Sami can apply the right skill. Pasting a diff, error message, or existing draft gives Sami something concrete to work with rather than a blank slate.
+</Tip>
