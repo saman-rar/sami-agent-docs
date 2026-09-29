@@ -1,7 +1,7 @@
 ---
-title: "Configure Sami's AI Model"
+title: "Configuring the Language Model for Your Sami Agent"
 sidebarTitle: "AI Model"
-description: "Change the language model Sami uses by editing agent.ts. Supports any model available through the eve framework."
+description: "Change the language model Sami uses by editing the model field in agent/agent.ts. Supports any provider and model identifier available in eve."
 ---
 
 Sami's AI model is configured in `agent/agent.ts` using the eve framework's `defineAgent` function. Changing the value of the `model` field is all it takes to swap the underlying language model — no other code changes are required.

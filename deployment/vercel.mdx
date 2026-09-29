@@ -1,5 +1,5 @@
 ---
-title: "Deploy Sami to Vercel"
+title: "Deploy Your Sami AI Assistant to Vercel Production"
 sidebarTitle: "Deploy to Vercel"
 description: "Deploy your Sami instance to production on Vercel using the eve CLI. Covers linking your project, setting environment variables, and going live."
 ---
@@ -54,9 +54,9 @@ Before deploying, make sure you have the following in place:
 
 ## Environment variables
 
-Sami uses Vercel OAuth for authentication and Better Auth for session management. The credentials these systems need — including your Vercel OAuth client details and the Better Auth secret — must be set in your **Vercel project settings** before the application will function correctly.
+Sami requires a set of credentials to handle authentication and secure sessions. These must be present in your **Vercel project settings** before the application will function correctly.
 
-You can configure environment variables through the Vercel dashboard under **Settings → Environment Variables**, or the `eve deploy` workflow will guide you through the required values on first deployment.
+You can configure environment variables through the Vercel dashboard under **Settings → Environment Variables**. The `eve deploy` workflow will prompt you to configure the necessary credentials on first deployment — follow the prompts and the CLI will guide you through each required value.
 
 ## Subsequent deployments
 

@@ -1,7 +1,7 @@
 ---
-title: "Navigating Sami's Chat Interface"
+title: "Using Sami's Chat Interface: Messages and Controls"
 sidebarTitle: "Chat Interface"
-description: "A guide to Sami's chat UI: sending messages, reading streaming responses, stopping generation, and steering conversations."
+description: "Learn how to send messages, read streaming responses, stop generation, and steer a conversation in a new direction using Sami's chat UI."
 ---
 
 Sami's chat interface is a single-page web app centered on a conversation panel and a persistent prompt bar at the bottom of the screen. When you first open Sami you see the prompt bar and the "sami" wordmark centered on the page — a blank canvas ready for your first message. Once a conversation begins, the prompt bar anchors to the bottom, the conversation scrolls above it, and a slim header with session controls appears at the top. This page walks you through every interaction available inside that layout.
@@ -44,7 +44,7 @@ If the cancellation itself encounters an error, a short inline alert appears in 
 
 ## Steering a conversation
 
-You don't have to wait for a response to finish before redirecting it. While Sami is still streaming, you can type a new message in the prompt bar and submit it. Sami will receive your new input and steer the ongoing turn in that direction — using `turnPolicy: "steer"` under the hood.
+You don't have to wait for a response to finish before redirecting it. While Sami is still streaming, you can type a new message in the prompt bar and submit it. Sami will receive your new input and steer the ongoing turn in that direction.
 
 This is useful when:
 

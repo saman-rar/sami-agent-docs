@@ -1,7 +1,7 @@
 ---
-title: "Troubleshooting Common Sami Issues"
+title: "Troubleshooting Common Issues with Your Sami Deployment"
 sidebarTitle: "Troubleshooting"
-description: "Fix the most common issues with Sami: sign-in errors, model failures, deployment problems, and session issues."
+description: "Step-by-step fixes for the most common Sami problems: sign-in errors, model failures, deployment credential issues, and session problems."
 ---
 
 This page covers the most common problems you might encounter while running or deploying Sami, along with steps to resolve each one. Work through the relevant section below before filing an issue.
@@ -54,7 +54,7 @@ This page covers the most common problems you might encounter while running or d
 
     1. Verify that you are signed in with the **same Vercel account** you used when the session was originally created. Sessions are scoped to the authenticated account and are not shared across accounts.
     2. Sign out, clear your cookies, and sign back in with the correct account.
-    3. If the session still does not appear, it may have expired or been invalidated by a redeployment that rotated the Better Auth secret.
+    3. If the session still does not appear, it may have expired or been invalidated by a redeployment that rotated internal session credentials. Redeploy the application to ensure credentials are consistent, then sign in again.
   </Accordion>
 
   <Accordion title="Development server not reloading after file changes">

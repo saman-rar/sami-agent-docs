@@ -1,7 +1,7 @@
 ---
-title: "Attaching Files to Sami Conversations"
+title: "Sending Images and File Attachments in Sami Messages"
 sidebarTitle: "File Attachments"
-description: "Send images and documents alongside your messages in Sami. Learn which file types are supported and how attachments work."
+description: "Send images, documents, and other files alongside your messages in Sami. Learn which file types are supported and how to get the most out of attachments."
 ---
 
 Sami supports file attachments directly in the prompt input, enabling multi-modal interactions where your message includes not just text but also images, documents, or other files. You can share a screenshot of an error, a diagram you want explained, a document you need summarized, or a code file you want reviewed — all in the same message as your instructions.
@@ -42,7 +42,7 @@ You can combine text and files in the same message in any combination:
   </Card>
 </CardGroup>
 
-When your message contains files, Sami builds a structured content payload that includes each file's data, filename, and media type. If you also included text, it is sent as a separate text part in the same turn. The model receives all parts together.
+When your message contains files, Sami sends them to the model together with any text you've written. Everything you include in that message — text and files alike — is delivered to the model in a single turn.
 
 ## Supported file types
 
